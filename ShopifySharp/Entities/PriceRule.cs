@@ -73,6 +73,12 @@ namespace ShopifySharp
         public PrerequisiteValueRange PrerequisiteSubtotalRange { get; set; }
 
         /**
+        * Prerequisite cart quantity range.
+        */
+        [JsonProperty("prerequisite_quantity_range")]
+        public PrerequisiteValueQuantityRange PrerequisiteQuantityRange { get; set; }
+
+        /**
         * Prerequisite shipping cost range.Can only be used when target_type is shipping_line.
         */
         [JsonProperty("prerequisite_shipping_price_range")]
@@ -145,5 +151,23 @@ namespace ShopifySharp
         */
         [JsonProperty("updated_at")]
         public DateTimeOffset? UpdatedAt { get; set; }
+
+        [JsonProperty("allocation_limit")]
+        public long? AllocationLimit { get; set; }
+
+        [JsonProperty("prerequisite_product_ids")]
+        public IEnumerable<long> PrerequisiteProductIds { get; set; }
+
+        [JsonProperty("prerequisite_variant_ids")]
+        public IEnumerable<long> PrerequisiteVariantIds { get; set; }
+
+        [JsonProperty("prerequisite_collection_ids")]
+        public IEnumerable<long> PrerequisiteCollectionIds { get; set; }
+
+        [JsonProperty("prerequisite_to_entitlement_purchase")]
+        public PrerequisiteAmountModel PrerequisiteToEntitlementPurchase { get; set; }
+
+        [JsonProperty("prerequisite_to_entitlement_quantity_ratio")]
+        public PrerequisiteQuantityRatio PrerequisiteToEntitlementQuantityRatio { get; set; }
     }
 }
