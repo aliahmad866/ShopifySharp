@@ -7,6 +7,12 @@ namespace ShopifySharp
     public class Refund : ShopifyObject
     {
         /// <summary>
+        /// The unique identifier of the order.
+        /// </summary>
+        [JsonProperty("order_id")]
+        public long? OrderId { get; set; }
+
+        /// <summary>
         /// The date and time when the refund was created. 
         /// </summary>
         [JsonProperty("created_at")]
@@ -50,6 +56,14 @@ namespace ShopifySharp
         /// </summary>
         [JsonProperty("note")]
         public string Note { get; set; }
+
+        /// <summary>
+        /// An optional comment that explains a discrepancy between calculated and actual refund amounts. 
+        /// Used to populate the reason property of the resulting order adjustment object attached to the refund.
+        /// </summary>
+        /// <value>restock, damage, customer, and other.</value>
+        [JsonProperty("discrepancy_reason")]
+        public string DiscrepancyReason { get; set; }
 
         /// <summary>
         /// The list of <see cref="RefundLineItem"/> objects
@@ -96,5 +110,11 @@ namespace ShopifySharp
         /// </summary>
         [JsonProperty("amount")]
         public decimal? Amount { get; set; }
+
+        /// <summary>
+        /// The maximum amount that can be refunded
+        /// </summary>
+        [JsonProperty("maximum_refundable")]
+        public decimal? MaximumRefundable { get; set; }
     }
 }

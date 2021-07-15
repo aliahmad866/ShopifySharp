@@ -82,12 +82,6 @@ namespace ShopifySharp
         public string[] EnabledPresentmentCurrencies { get; set; }
 
         /// <summary>
-        /// Indicates whether the shop forces requests made to its resources to be made over SSL, using the HTTPS protocol. If true, HTTP requests will be redirected to HTTPS.
-        /// </summary>
-        [JsonProperty("force_ssl")]
-        public bool? ForceSSL { get; set; }
-
-        /// <summary>
         /// Present when a shop has a google app domain. It will be returned as a URL, else null.
         /// </summary>
         [JsonProperty("google_apps_domain")]
@@ -261,5 +255,11 @@ namespace ShopifySharp
         /// </summary>
         [JsonProperty("updated_at")]
         public DateTimeOffset? UpdatedAt { get; set; }
+
+        /// <summary>
+        /// The default location of the shop
+        /// </summary>
+        [JsonProperty("primary_location_id")]
+        public long? PrimaryLocationId { get; set; }
     }
 }

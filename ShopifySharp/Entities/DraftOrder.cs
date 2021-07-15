@@ -1,10 +1,10 @@
 using System;
 using System.Collections.Generic;
-using Newtonsoft.Json; 
+using Newtonsoft.Json;
 
-namespace ShopifySharp 
+namespace ShopifySharp
 {
-    public class DraftOrder : ShopifyObject 
+    public class DraftOrder : ShopifyObject
     {
         /// <summary>
         /// The unique numeric identifier for the order associated to the draft order, once created.
@@ -28,7 +28,7 @@ namespace ShopifySharp
         /// The mailing address to where the order will be shipped. This address is optional and will not be available on orders that do not require one.
         /// </summary>
         [JsonProperty("shipping_address")]
-        public Address ShippingAddress { get; set; } 
+        public Address ShippingAddress { get; set; }
 
         /// <summary>
         /// The mailing address associated with the payment method. This address is an optional field that will not be available on orders that do not require one. 
@@ -64,7 +64,7 @@ namespace ShopifySharp
         /// This auto-generated property is the date and time when the invoice was emailed to the customer, in ISO 8601 format. 
         /// </summary>
         [JsonProperty("invoice_sent_at")]
-        public DateTime? InvoiceSentAt { get; set; }
+        public DateTimeOffset? InvoiceSentAt { get; set; }
 
         /// <summary>
         /// The URL for the invoice.
@@ -95,6 +95,12 @@ namespace ShopifySharp
         /// </summary>
         [JsonProperty("tax_exempt")]
         public bool? TaxExempt { get; set; }
+
+        /// <summary>
+        /// Whether the customer is exempt from paying specific taxes on their order
+        /// </summary>
+        [JsonProperty("tax_exemptions")]
+        public IEnumerable<string> TaxExemptions { get; set; }
 
         /// <summary>
         /// An array of tax_line objects, each of which details the total taxes applicable to the order. When creating an order through the API, tax lines may be specified on the order or the line items but not both. Tax lines specified on the order are split on the taxable line items in the created order. 
@@ -136,19 +142,19 @@ namespace ShopifySharp
         /// Date at which order is created and the draft order changes to completed status. The API returns this value in ISO 8601 format. 
         /// </summary>
         [JsonProperty("completed_at")]
-        public DateTime? CompletedAt { get; set; }
+        public DateTimeOffset? CompletedAt { get; set; }
 
         /// <summary>
         /// This auto-generated property is the date and time when the draft order was created in Shopify, in ISO 8601 format. 
         /// </summary>
         [JsonProperty("created_at")]
-        public DateTime? CreatedAt { get; set; }
+        public DateTimeOffset? CreatedAt { get; set; }
 
         /// <summary>
         /// The date and time when the order was last modified. The API returns this value in ISO 8601 format. 
         /// </summary>
         [JsonProperty("updated_at")]
-        public DateTime? UpdatedAt { get; set; }
+        public DateTimeOffset? UpdatedAt { get; set; }
 
         /// <summary>
         /// Once a draft order is set to status completed the only further draft order modifications that can be made are adding tags or metafields. No other draft order actions are permitted.
@@ -164,5 +170,11 @@ namespace ShopifySharp
         /// </summary>
         [JsonProperty("metafields")]
         public IEnumerable<MetaField> Metafields { get; set; }
+
+        /// <summary>
+        /// An optional boolean that you can send as part of a draft order object to load customer shipping information.
+        /// </summary>
+        [JsonProperty("use_customer_default_address")]
+        public bool? UseCustomerDefaultAddress { get; set; }
     }
 }
